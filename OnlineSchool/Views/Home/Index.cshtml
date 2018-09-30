@@ -1,0 +1,385 @@
+﻿@model IEnumerable<OnlineSchool.Models.ApplicationUser>
+
+@using Microsoft.AspNet.Identity
+@using OnlineSchool.Models
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (var db = new ApplicationDbContext())
+{
+    ViewBag.Count = 0;
+
+    foreach (var item in Model)
+    {
+        if (!db.Students.Any(u2 => u2.Email == item.Email) && !db.Servants.Any(u2 => u2.Email == item.Email))
+        {
+            ViewBag.Count++;
+        }
+
+    }
+
+}
+@if (Request.IsAuthenticated && User.IsInRole("Admins"))
+{
+    if (ViewBag.Count != 0)
+    {
+    <div class="alert alert-danger alert-dismissible show fade text-center shadow-lg" style="width:27%; position:fixed; left:72%; bottom:2%; z-index:99;" role="alert">
+        We have @ViewBag.Count registered users need vertification <strong><a href="#">Click here to view them </a></strong> <small>(Not redirecting yet)</small>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    }
+}
+
+<div class="jumbotron border border-primary">
+
+    <h1>Announcement <span class="mx-1"> <img src="~/Content/megaphone.svg" width="50" height="50" /></span> <span class="float-right badge badge-pill badge-info">NEW</span> </h1>
+    <p class="lead">Important announcements to be added here // Introduction</p>
+   
+    <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+           aria-controls="collapseExample">Read More &dArr;</a>
+    </p>
+
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            Ba2y el announcement in details
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <h2>Mawdoo3 Ro7y 1</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incida qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p><a class="btn btn-default" href="#">Read more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Mawdoo3 Ro7y 2</h2>
+        <p>
+            Lorem ipsum dolor sit amet, nt occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p><a class="btn btn-default" href="#">Read more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Mawdoo3 Ro7y 3</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur aagna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lnim id est laborum.
+        </p>
+        <p><a class="btn btn-default" href="#">Read more &raquo;</a></p>
+    </div>
+</div>
+<br />
+<div class="jumbotron bg-primary mx-auto mt-0 pt-0">
+    <h3 class="text-white text-uppercase text-center my-2 bg-primary rounded">Board of Honor - 2018/2019</h3>
+    <br />
+
+    <div class="card-deck">
+
+        <div class="card border border-success shadow text-center">
+            <div class="card-header">
+                <img class="float-left" src="~/Content/boy.svg" width="100" height="100" alt="Card image cap">
+                <img class="float-right" src="~/Content/first.svg" width="100" height="100" alt="Card image cap">
+                <h5 class="text-success text-uppercase">First Place!</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Student Name </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Student Level</h6>
+            </div>
+            <div class="card-footer">
+                <div class="row mx-auto">
+
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Coptic: <strong class="text-muted">7.4</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Al7an: <strong class="text-muted">18.5</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Ta2s: <strong class="text-muted">10</strong> </small>
+                    </div>
+
+                    <div class="flex-column text-success">
+                        <small class="ml-3">Total: <strong class="text-muted">25/25</strong> </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card border border-success shadow text-center">
+            <div class="card-header">
+                <img class="float-left" src="~/Content/girl.svg" width="100" height="100" alt="Card image cap">
+                <img class="float-right" src="~/Content/first.svg" width="100" height="100" alt="Card image cap">
+                <h5 class="text-success text-uppercase">First Place!</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Student Name </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Student Level</h6>
+            </div>
+            <div class="card-footer">
+                <div class="row mx-auto">
+
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Coptic: <strong class="text-muted">7.4</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Al7an: <strong class="text-muted">18.5</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Ta2s: <strong class="text-muted">10</strong> </small>
+                    </div>
+
+                    <div class="flex-column text-success">
+                        <small class="ml-3">Total: <strong class="text-muted">25/25</strong> </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border border-success shadow text-center">
+            <div class="card-header">
+                <img class="float-left" src="~/Content/boy.svg" width="100" height="100" alt="Card image cap">
+                <img class="float-right" src="~/Content/first.svg" width="100" height="100" alt="Card image cap">
+                <h5 class="text-success text-uppercase">First Place!</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Student Name </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Student Level</h6>
+            </div>
+            <div class="card-footer">
+                <div class="row mx-auto">
+
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Coptic: <strong class="text-muted">7.4</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Al7an: <strong class="text-muted">18.5</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Ta2s: <strong class="text-muted">10</strong> </small>
+                    </div>
+
+                    <div class="flex-column text-success">
+                        <small class="ml-3">Total: <strong class="text-muted">25/25</strong> </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="card-deck">
+
+        <div class="card border border-success shadow text-center">
+            <div class="card-header">
+                <img class="float-left" src="~/Content/girl.svg" width="100" height="100" alt="Card image cap">
+                <img class="float-right" src="~/Content/second-prize.svg" width="100" height="100" alt="Card image cap">
+                <h5 class="text-success text-uppercase">Second Place!</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Student Name </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Student Level</h6>
+            </div>
+            <div class="card-footer">
+                <div class="row mx-auto">
+
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Coptic: <strong class="text-muted">7.4</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Al7an: <strong class="text-muted">18.5</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Ta2s: <strong class="text-muted">10</strong> </small>
+                    </div>
+
+                    <div class="flex-column text-success">
+                        <small class="ml-3">Total: <strong class="text-muted">25/25</strong> </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card border border-success shadow text-center">
+            <div class="card-header">
+                <img class="float-left" src="~/Content/boy.svg" width="100" height="100" alt="Card image cap">
+                <img class="float-right" src="~/Content/second-prize.svg" width="100" height="100" alt="Card image cap">
+                <h5 class="text-success text-uppercase">Second Place!</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Student Name </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Student Level</h6>
+            </div>
+            <div class="card-footer">
+                <div class="row mx-auto">
+
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Coptic: <strong class="text-muted">7.4</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Al7an: <strong class="text-muted">18.5</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Ta2s: <strong class="text-muted">10</strong> </small>
+                    </div>
+
+                    <div class="flex-column text-success">
+                        <small class="ml-3">Total: <strong class="text-muted">25/25</strong> </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border border-success shadow text-center">
+            <div class="card-header">
+                <img class="float-left" src="~/Content/boy.svg" width="100" height="100" alt="Card image cap">
+                <img class="float-right" src="~/Content/second-prize.svg" width="100" height="100" alt="Card image cap">
+                <h5 class="text-success text-uppercase">Second Place!</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Student Name </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Student Level</h6>
+            </div>
+            <div class="card-footer">
+                <div class="row mx-auto">
+
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Coptic: <strong class="text-muted">7.4</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Al7an: <strong class="text-muted">18.5</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Ta2s: <strong class="text-muted">10</strong> </small>
+                    </div>
+
+                    <div class="flex-column text-success">
+                        <small class="ml-3">Total: <strong class="text-muted">25/25</strong> </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="card-deck">
+
+        <div class="card border border-success shadow text-center">
+            <div class="card-header">
+                <img class="float-left" src="~/Content/girl.svg" width="100" height="100" alt="Card image cap">
+                <img class="float-right" src="~/Content/third.svg" width="100" height="100" alt="Card image cap">
+                <h5 class="text-success text-uppercase">Third Place!</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Student Name </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Student Level</h6>
+            </div>
+            <div class="card-footer">
+                <div class="row mx-auto">
+
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Coptic: <strong class="text-muted">7.4</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Al7an: <strong class="text-muted">18.5</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Ta2s: <strong class="text-muted">10</strong> </small>
+                    </div>
+
+                    <div class="flex-column text-success">
+                        <small class="ml-3">Total: <strong class="text-muted">25/25</strong> </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card border border-success shadow text-center">
+            <div class="card-header">
+                <img class="float-left" src="~/Content/girl.svg" width="100" height="100" alt="Card image cap">
+                <img class="float-right" src="~/Content/third.svg" width="100" height="100" alt="Card image cap">
+                <h5 class="text-success text-uppercase">Third Place!</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Student Name </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Student Level</h6>
+            </div>
+            <div class="card-footer">
+                <div class="row mx-auto">
+
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Coptic: <strong class="text-muted">7.4</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Al7an: <strong class="text-muted">18.5</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Ta2s: <strong class="text-muted">10</strong> </small>
+                    </div>
+
+                    <div class="flex-column text-success">
+                        <small class="ml-3">Total: <strong class="text-muted">25/25</strong> </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border border-success shadow text-center">
+            <div class="card-header">
+                <img class="float-left" src="~/Content/boy.svg" width="100" height="100" alt="Card image cap">
+                <img class="float-right" src="~/Content/third.svg" width="100" height="100" alt="Card image cap">
+                <h5 class="text-success text-uppercase">Third Place!</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Student Name </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Student Level</h6>
+            </div>
+            <div class="card-footer">
+                <div class="row mx-auto">
+
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Coptic: <strong class="text-muted">7.4</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Al7an: <strong class="text-muted">18.5</strong> </small>
+                    </div>
+                    <div class="flex-column">
+                        <small class="text-muted ml-3">Ta2s: <strong class="text-muted">10</strong> </small>
+                    </div>
+
+                    <div class="flex-column text-success">
+                        <small class="ml-3">Total: <strong class="text-muted">25/25</strong> </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="jumbotron border-info ">
+    <h1>Mawa3ed Emte7anat</h1>
+
+</div>
+
+<div class="jumbotron">
+    <h1>Afkar lel ma5domen</h1>
+    <p class="lead">Postat ro7ya lel fasl kolo & quizat & mosab2at & poll options</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

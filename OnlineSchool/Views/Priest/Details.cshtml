@@ -1,0 +1,54 @@
+﻿@model OnlineSchool.Models.Priest
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h2>Fr.@Model.Name</h2>
+
+<div>
+    <h4>Priest Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OfficeNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OfficeNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Church.Name)
+        </dt>
+
+        <dd>
+            <a class="text-primary" href="~/Church/Details/@Model.Church.Id">
+
+                @Html.DisplayFor(model => model.Church.Name)
+            </a>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", "Priest", new { @class = "btn btn-dark" }) ||
+    @Html.ActionLink("Edit Priest", "Edit", "Priest", new { id = Model.Id }, new { @class = "btn btn-success" })
+</p>
+

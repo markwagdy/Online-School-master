@@ -1,0 +1,59 @@
+﻿@model OnlineSchool.ViewModels.ClassViewModel
+
+
+
+@if (Model.Id == 0)
+{
+    ViewBag.Title = "New";
+}
+else
+{
+    ViewBag.Title = "Edit";
+}
+
+@if (Model.Id == 0)
+{
+    <h2>New Class</h2>
+}
+else
+{
+    <h2>@Model.Name</h2>
+}
+@using (Html.BeginForm("Save", "Class"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Students, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.ListBoxFor(s=>s.SelectedStudents, Model.Students,  new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.Students, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.Id)
+
+
+}

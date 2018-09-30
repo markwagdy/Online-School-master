@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+<ul class="nav navbar-nav form-inline">
+
+    <div class="dropdown"> 
+        <button class="btn btn-outline-primary" id="notifcationsDropdown" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+           <img src="~/Content/alarm.svg" width="20" height="20" />
+            <span class="badge badge-danger" style="position:absolute">2</span>
+        </button>
+
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notifcationsDropdown">
+            <h6 class="dropdown-header text-center">Notifications</h6>
+            
+
+            <div class="card text-center" style="width: 16rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Notification Title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">3 minutes ago</h6>
+                    <p class="card-text">
+                        Some quick example text to build
+                        on the card title and make up the bulk of the card's content.
+                    </p>
+                    <a href="#" class="card-link btn btn-dark">Go To</a>
+                    <a href="#" class="card-link btn btn-success">Read</a>
+                </div>
+            </div>
+            <div class="card text-center" style="width: 16rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Notification Title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">5 days ago</h6>
+                    <p class="card-text">
+                        Some quick example text to build
+                        on the card title and make up the bulk of the card's content.
+                    </p>
+                    <a href="#" class="card-link btn btn-dark">Go To</a>
+                    <a href="#" class="card-link btn btn-success">Read</a>
+                </div>
+            </div>
+
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="btn btn-outline-primary" id="inboxDropdown" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            <img src="~/Content/inbox.svg" width="20" height="20" />
+            <span class="badge badge-danger" style="position:absolute">15</span>
+
+        </button>
+        <div class="dropdown-menu" aria-labelledby="inboxDropdown">
+            <h6 class="dropdown-header text-center">Inbox</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+    </div>
+
+    <li class="nav-item">@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })</li>
+    <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+</ul>
+
+    }
+}
+else
+{
+    <ul class="nav navbar-nav form-inline">
+        <li class="nav-item">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li class="nav-item">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
+}

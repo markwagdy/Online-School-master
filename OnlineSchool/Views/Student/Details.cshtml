@@ -1,0 +1,370 @@
+﻿@model OnlineSchool.Models.Student
+
+@using OnlineSchool.Models
+
+
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h2>@Model.Name</h2>
+
+    <h4>Student Details</h4>
+    @if (Model.StudentCard == null)
+    {
+    <div class="float-right">
+        <img class="border border-2 border-info rounded mt-3" height="236" width="360"
+             src="~/Content/NoCard.png" style="border-width: 0px;" />
+    </div>
+    }
+    else
+    {
+        <div class="float-right">
+            <img class="border border-2 border-info rounded mt-3" height="236" width="360"
+                 src="~/Images/@Model.StudentCard.ImagePath" style="border-width: 0px;" />
+        </div>
+
+    }
+    <hr />
+    <div class="form-row">
+        <dl class="dl-horizontal mx-auto flex-column">
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Code)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Code)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BirtDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BirtDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MobileNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HomeNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HomeNumber)
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal mx-auto flex-column">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicYear)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AcademicYear)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MaritalStatus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaritalStatus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Job)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Job)
+            </dd>
+
+        </dl>
+
+        <dl class="dl-horizontal mx-auto flex-column">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FatherPhone)
+            </dt>
+
+            <dd>
+                @if (Model.FatherPhone == null)
+                {
+                    <strong class="text-warning text-uppercase">Not Available</strong>
+                }
+                else
+                {
+
+                    @Html.DisplayFor(model => model.FatherPhone)
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MotherPhone)
+            </dt>
+
+            <dd>
+                @if (Model.MotherPhone == null)
+                {
+                    <strong class="text-warning text-uppercase">Not Available</strong>
+                }
+                else
+                {
+
+                    @Html.DisplayFor(model => model.MotherPhone)
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MotherName)
+            </dt>
+
+            <dd>
+                @if (Model.MotherName == null)
+                {
+                    <strong class="text-warning text-uppercase">Not Available</strong>
+                }
+                else
+                {
+
+                    @Html.DisplayFor(model => model.MotherName)
+                }
+            </dd>
+
+        </dl>
+
+        <dl class="dl-horizontal mx-auto flex-column">
+            <dt>
+                @Html.DisplayNameFor(model => model.Priest.Name)
+
+            </dt>
+
+            <dd>
+                <a class="text-primary" href="~/Priest/Details/@Model.Priest.Id">
+                    @Html.DisplayFor(model => model.Priest.Name)
+                </a>
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Church.Name)
+            </dt>
+
+            <dd>
+                <a class="text-primary" href="~/Church/Details/@Model.Church.Id">
+                    @Html.DisplayFor(model => model.Church.Name)
+                </a>
+
+            </dd>
+
+        </dl>
+    </div>
+    <h4>Address</h4>
+    <hr />
+
+    <div class="form-row">
+
+        <dl class="dl-horizontal mx-auto flex-column">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address.Apartment)
+            </dt>
+
+            <dd>
+                @if (Model.Address.Apartment == null)
+                {
+                    <strong class="text-warning text-uppercase">Not Available</strong>
+                }
+                else
+                {
+
+                    @Html.DisplayFor(model => model.Address.Apartment)
+                }
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal mx-auto flex-column">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address.Building)
+            </dt>
+
+            <dd>
+                @if (Model.Address.Building == null)
+                {
+                    <strong class="text-warning text-uppercase">Not Available</strong>
+                }
+                else
+                {
+
+                    @Html.DisplayFor(model => model.Address.Building)
+                }
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal mx-auto flex-column">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address.Street)
+            </dt>
+
+            <dd>
+                @if (Model.Address.Street == null)
+                {
+                    <strong class="text-warning text-uppercase">Not Available</strong>
+                }
+                else
+                {
+
+                    @Html.DisplayFor(model => model.Address.Street)
+                }
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal mx-auto flex-column">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address.District)
+            </dt>
+
+            <dd>
+                @if (Model.Address.District == null)
+                {
+                    <strong class="text-warning text-uppercase">Not Available</strong>
+                }
+                else
+                {
+
+                    @Html.DisplayFor(model => model.Address.District)
+                }
+            </dd>
+        </dl>
+
+
+
+    </div>
+    <hr />
+
+
+
+    @if (Model.IsDeacon)
+    {
+        <h3 class="text-center">Deaconship History</h3>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark bg-secondary text-center">
+                <tr>
+                    <td class="font-weight-bold">
+                        El Rotba
+                    </td>
+                    <td class="font-weight-bold">
+
+                        Tare5 el Reshama
+                    </td>
+                    <td class="font-weight-bold">
+
+                        Makan el Reshama
+                    </td>
+                    <td class="font-weight-bold">
+
+                        El Esm fi el Reshama
+                    </td>
+                    <td class="font-weight-bold">
+
+                        El Oskof
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Add More Records (Soon)", "", "Student", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            </thead>
+
+
+            @foreach (var history in Model.DeaconshipHistories)
+            {
+                <tr class="text-truncate text-center">
+                    <td>
+                        @Html.DisplayFor(modelItem => history.Rank)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => history.AssignTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => history.AssignPlace)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => history.AssignName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => history.Bishop)
+                    </td>
+                    <td></td>
+                </tr>
+
+
+
+            }
+        </table>
+        <br />
+        <hr />
+    }
+    else if(Model.Gender == "Male")
+    {
+        <P class="float-right">
+            @Html.ActionLink("Became Deacon? (Soon)", "Index", "Student", new { @class = "btn btn-primary" })
+
+        </P>
+
+    }
+
+
+
+    <p>
+        @Html.ActionLink("Back to List", "Index", "Student", new { @class = "btn btn-dark" }) ||
+        @Html.ActionLink("Edit Student", "Edit", "Student", new { id = Model.Id }, new { @class = "btn btn-success" })
+    </p>
+    <p>
+        @Html.ActionLink("Print (Soon)", "Print", "Student", new { @class = "btn btn-light" })
+
+    </p>
+
+    <style>
+        .border-2 {
+            border-width: 2px !important;
+        }
+
+
+        .custom-control-label::before,
+        .custom-control-label::after {
+            bottom: .9rem;
+            width: 1.65rem;
+            height: 1.65rem;
+            margin-left: -.5rem;
+        }
+    </style>

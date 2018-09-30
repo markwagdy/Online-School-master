@@ -1,0 +1,66 @@
+﻿@model IEnumerable<OnlineSchool.Models.Priest>
+
+@{
+    ViewBag.Title = "Priests";
+}
+
+
+<h2 class="text-center">List of Priests</h2>
+
+<p class="float-right">
+    @Html.ActionLink("Add new Priest", "New", "Priest", new { @class = "btn btn-warning" })
+
+</p>
+
+@if (Model.Count() == 0)
+{
+    <p class="text-danger">We don't currently have any priests yet</p>
+}
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light text-center">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OfficeNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MobileNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Church.Name)
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfficeNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Church.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Priest", new { id = item.Id }, new { @class = "btn btn-success" })
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "Priest", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+            }
+
+    </table>

@@ -1,0 +1,257 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated && User.IsInRole("Admins"))
+{
+
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h6 class="text-center text-uppercase pt-4">Super Admin Menu</h6>
+        </div>
+        <ul class="list-unstyled components">
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <img src="~/Content/Manage.svg" width="22" height="22" class="mr-2 mb-1 sidebar-image" />
+                    Manage
+                </a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="~/Student">Student</a>
+                    </li>
+                    <li>
+                        <a href="~/Servant">Servant</a>
+                    </li>
+                    <li class="dropdown-divider" style="border-top:0"></li>
+                    <li>
+                        <a href="~/Lesson">New Lesson (Soon)</a>
+                    </li>
+                    <li>
+                        <a href="~/Class">New Class (Soon)</a>
+                    </li>
+                    <li class="dropdown-divider" style="border-top:0"></li>
+
+                    <li>
+                        <a href="~/Priest">Priest</a>
+                    </li>
+                    <li>
+                        <a href="~/Church">Church</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="~/Content/test-results.svg" width="22" height="22" class="mb-1 mr-2 sidebar-image" />
+                    Grades (Soon)
+                </a>
+            </li>
+
+
+
+        </ul>
+    </nav>
+
+}
+else if (Request.IsAuthenticated)
+{
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h6 class="text-center text-uppercase pt-4">
+                Account not verified yet, please wait while one of the
+                servants verify it.
+            </h6>
+        </div>
+
+    </nav>
+}
+else
+{
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h6 class="text-center text-uppercase pt-4">Please Log in to be able to see your own options</h6>
+        </div>
+
+    </nav>
+
+}
+
+
+<style>
+
+
+
+
+    @@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #fafafa;
+    }
+
+    p {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1em;
+        font-weight: 300;
+        line-height: 1.7em;
+        color: #999;
+    }
+
+    a,
+    a:hover,
+    a:focus {
+        color: inherit;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .line {
+        width: 100%;
+        height: 0px;
+        border-bottom: 1px dashed #ddd;
+        margin: 40px 0;
+    }
+
+    /* ---------------------------------------------------
+            SIDEBAR STYLE
+        ----------------------------------------------------- */
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+    #sidebar {
+        width: 200px;
+        position: fixed;
+        top: 50px;
+        left: 0;
+        height: 100vh;
+        z-index: 999;
+        background: #127BA3;
+        color: #fff;
+        transition: all 0.3s;
+    }
+
+        #sidebar.active {
+            margin-left: -200px;
+        }
+
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: #158CBA;
+        }
+
+        #sidebar ul.components {
+            padding: 20px 0;
+        }
+
+        #sidebar ul p {
+            color: #fff;
+        }
+
+        #sidebar ul li a {
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+        }
+
+            #sidebar ul li a:hover {
+                color: #0d5474;
+                background: #fff;
+            }
+
+                #sidebar ul li a:hover .sidebar-image {
+                    cursor: pointer;
+                    color: #0d5474;
+                    filter: invert(0.5) sepia(1) saturate(70) hue-rotate(180deg);
+                }
+
+        #sidebar ul li.active > a,
+        a[aria-expanded="true"] {
+            color: #fff;
+            background: #158CBA;
+        }
+
+    a[data-toggle="collapse"] {
+        position: relative;
+    }
+
+    .dropdown-toggle::after {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+
+    ul ul a {
+        font-size: 0.9em !important;
+        padding-left: 30px !important;
+        background: #08384e;
+    }
+
+    ul.CTAs {
+        padding: 20px;
+    }
+
+        ul.CTAs a {
+            text-align: center;
+            font-size: 0.9em !important;
+            display: block;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+    a.download {
+        background: #fff;
+        color: #7386D5;
+    }
+
+    a.article,
+    a.article:hover {
+        background: #6d7fcc !important;
+        color: #fff !important;
+    }
+
+    /* ---------------------------------------------------
+            CONTENT STYLE
+        ----------------------------------------------------- */
+
+    #content {
+        width: calc(100% - 250px);
+        padding: 40px;
+        min-height: 100vh;
+        transition: all 0.3s;
+        position: absolute;
+        top: 30px;
+        right: 5px;
+
+    }
+
+        #content.active {
+            width: 100%;
+        }
+
+    /* ---------------------------------------------------
+            MEDIAQUERIES
+        ----------------------------------------------------- */
+
+    @@media (max-width: 768px) {
+        #sidebar {
+            margin-left: -250px;
+        }
+
+            #sidebar.active {
+                margin-left: 0;
+            }
+
+        #content {
+            width: 100%;
+        }
+
+            #content.active {
+                width: calc(100% - 250px);
+            }
+
+        #sidebarCollapse span {
+            display: none;
+        }
+    }
+</style>
