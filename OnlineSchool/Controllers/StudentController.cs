@@ -25,10 +25,18 @@ namespace OnlineSchool.Controllers
         // GET: Student
         [HttpGet]
         [Authorize(Roles = "Admins")]
-        public ActionResult Index()
+        public ActionResult Index(string SearchBy,string Search)
         {
-            var students = _context.Students.Include(s => s.Priest).ToList();
-            return View("Index", students);
+            if (SearchBy == "Name")
+            {
+               // var students = _context.Students.Where(x => x.Name.StartsWith(Search) || Search==null ).Include(s => s.Priest).ToList();
+                return View(_context.Students.Where(x => x.Name.StartsWith(Search) || Search == null).Include(s => s.Priest).ToList());
+            }
+            else
+            {
+               // var students = _context.Students.Where(x => x.Code == Search).Include(s => s.Priest).ToList();
+                return View(_context.Students.Where(x => x.Code==Search || Search == null).Include(s => s.Priest).ToList());
+            }
         }
 
         [Authorize(Roles = "Admins")]
@@ -232,6 +240,11 @@ namespace OnlineSchool.Controllers
 
             return View("Details", student);
         }
+
+        
+
+
+
 
         [HttpPost]
         [Authorize(Roles = "Admins")]
